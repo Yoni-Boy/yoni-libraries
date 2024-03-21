@@ -1,0 +1,315 @@
+<!--https://bootstrap-menu.com/detail-multilevel.html-->
+
+
+<a class="navbar-brand" *ngIf="isRootNode" href="#" >{{ trigger.name }}</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" *ngIf="isRootNode" [attr.data-bs-target]="'#' + trigger.state">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="{{trigger.state}}" *ngIf="isRootNode">
+  <ul class="navbar-nav" *ngFor="let node of trigger?.children; let i = index">
+
+    <li class="nav-item" *ngIf="!isExpandable(node);" [attr.data-leveltree]="level_tree">
+      <a class="nav-link" href="#">{{ node.name }}</a>
+    </li>
+
+    <lib-menubar-tree-node [trigger]="node" [isRootNode]="false" [root]="trigger"
+                     *ngIf="isExpandable(node);" [level]="level + 1" [level_tree]="level_tree + '.' +  i"></lib-menubar-tree-node>
+
+  </ul>
+</div>
+
+
+<li class="nav-item" *ngIf="trigger?.children === undefined && !isRootNode" [attr.data-leveltree]="level_tree">
+  <a class="nav-link" href="#">{{ trigger.name }}</a>
+</li>
+
+<li class="nav-item dropdown" [attr.data-leveltree]="level_tree" *ngIf="trigger?.children !== undefined && !isRootNode">
+  <a class="nav-link dropdown-toggle" role="button" id="{{trigger.state}}" data-bs-toggle="dropdown" aria-expanded="true">
+    {{trigger.name}}
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="{{trigger.state}}" [attr.aria-labelledby]="trigger.state" *ngIf="level < 2">
+    <ng-container *ngFor="let node of trigger?.children; let i = index">
+
+      <lib-menubar-tree-node [trigger]="node" [isRootNode]="false" [level]="level + 1" [level_tree]="level_tree + '.' +  i"></lib-menubar-tree-node>
+    </ng-container>
+  </ul>
+  <ul class="submenu dropdown-menu" aria-labelledby="{{trigger.state}}" [attr.aria-labelledby]="trigger.state" *ngIf="level >= 2">
+    <ng-container *ngFor="let node of trigger?.children; let i = index">
+
+      <lib-menubar-tree-node [trigger]="node" [isRootNode]="false" [level]="level + 1" [level_tree]="level_tree + '.' +  i"></lib-menubar-tree-node>
+    </ng-container>
+  </ul>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--https://bootstrap-menu.com/detail-multilevel.html-->
+<!--<a class="navbar-brand" *ngIf="isRootNode" href="#">{{ trigger.name }}</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" *ngIf="isRootNode" [attr.data-bs-target]="'#' + trigger.state">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="{{trigger.state}}" *ngIf="isRootNode">
+  <ul class="navbar-nav" *ngFor="let node of trigger?.children; let i = index">
+
+    <li class="nav-item" *ngIf="!isExpandable(node);">
+      <a class="nav-link" href="#">{{ node.name }}</a>
+    </li>-->
+<!--<li class="nav-item" *ngIf="isExpandable(node);">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">{{node.name}}</a>-->
+<!--<ul class="dropdown-menu">-->
+<!--<app-my-nav-menu [trigger]="node" [isRootNode]="false" [root]="trigger"
+                 *ngIf="isExpandable(node);" [level]="level + 1"></app-my-nav-menu>-->
+<!--</ul>-->
+<!--</li>-->
+<!--<ng-template #menuItem>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">{{ node.name }}</a>
+  </li>
+</ng-template>-->
+<!--</ul>
+</div>
+
+
+<li class="nav-item" *ngIf="trigger?.children === undefined && !isRootNode">
+  <a class="nav-link" href="#">{{ trigger.name }}</a>
+</li>
+
+<li class="nav-item dropdown" *ngIf="trigger?.children !== undefined && !isRootNode">
+  <a class="nav-link dropdown-toggle" role="button" id="{{trigger.state}}" data-bs-toggle="dropdown" aria-expanded="true">
+    {{trigger.name}}
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="{{trigger.state}}" [attr.aria-labelledby]="trigger.state" *ngIf="level < 2">
+    <ng-container *ngFor="let node of trigger?.children; let i = index">
+
+      <app-my-nav-menu [trigger]="node" [isRootNode]="false" [level]="level + 1"></app-my-nav-menu>
+    </ng-container>
+  </ul>
+  <ul class="submenu dropdown-menu" aria-labelledby="{{trigger.state}}" [attr.aria-labelledby]="trigger.state" *ngIf="level >= 2">
+    <ng-container *ngFor="let node of trigger?.children; let i = index">
+
+      <app-my-nav-menu [trigger]="node" [isRootNode]="false" [level]="level + 1"></app-my-nav-menu>
+    </ng-container>
+  </ul>
+</li>-->
+<!--<a class="navbar-brand" *ngIf="isRootNode" href="#">{{ trigger.name }}</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" *ngIf="isRootNode" [attr.data-bs-target]="'#' + trigger.state">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="{{trigger.state}}" *ngIf="isRootNode">
+  <ul class="navbar-nav" *ngFor="let node of trigger?.children; let i = index">
+
+    <li class="nav-item" *ngIf="!isExpandable(node);">
+      <a class="nav-link" href="#">{{ node.name }}</a>
+    </li>-->
+<!--<li class="nav-item" *ngIf="isExpandable(node);">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">{{node.name}}</a>-->
+<!--<ul class="dropdown-menu">-->
+<!--<app-my-nav-menu [trigger]="node" [isRootNode]="false" [root]="trigger"
+                 *ngIf="isExpandable(node);"></app-my-nav-menu>-->
+<!--</ul>-->
+<!--</li>-->
+<!--<ng-template #menuItem>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">{{ node.name }}</a>
+  </li>
+</ng-template>-->
+<!--</ul>
+</div>
+
+
+<li class="nav-item" *ngIf="trigger?.children === undefined && !isRootNode">
+  <a class="nav-link" href="#">{{ trigger.name }}</a>
+</li>
+
+<li class="nav-item dropdown" *ngIf="trigger?.children !== undefined && !isRootNode">
+  <a class="nav-link dropdown-toggle"  role="button" id="{{trigger.state}}" data-bs-toggle="dropdown" aria-expanded="true">
+    {{trigger.name}}
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="{{trigger.state}}" [attr.aria-labelledby]="trigger.state">
+    <ng-container *ngFor="let node of trigger?.children; let i = index">
+
+      <app-my-nav-menu [trigger]="node" [isRootNode]="false"></app-my-nav-menu>
+    </ng-container>
+  </ul>
+</li>-->
+<!--<a class="navbar-brand" *ngIf="isRootNode" href="#">{{ trigger.name }}</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" *ngIf="isRootNode" [attr.data-bs-target]="'#' + trigger.state">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="{{trigger.state}}" *ngIf="isRootNode">
+  <ul class="navbar-nav" *ngFor="let node of trigger?.children; let i = index">
+
+    <li class="nav-item" *ngIf="!isExpandable(node);">
+      <a class="nav-link" href="#">{{ node.name }}</a>
+    </li>-->
+<!--<li class="nav-item" *ngIf="isExpandable(node);">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">{{node.name}}</a>-->
+<!--<ul class="dropdown-menu">-->
+<!--<app-my-nav-menu [trigger]="node" [isRootNode]="false" [root]="trigger"
+                 *ngIf="isExpandable(node);"></app-my-nav-menu>-->
+<!--</ul>-->
+<!--</li>-->
+<!--<ng-template #menuItem>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">{{ node.name }}</a>
+  </li>
+</ng-template>-->
+<!--</ul>
+</div>
+
+
+<li class="nav-item" *ngIf="trigger?.children === undefined && !isRootNode">
+  <a class="nav-link" href="#">{{ trigger.name }}</a>
+</li>
+
+<li class="nav-item" *ngIf="trigger?.children !== undefined && !isRootNode">
+  <a class="nav-link dropdown-toggle" href="#" role="button" id="{{trigger.state}}" data-bs-toggle="dropdown">
+    {{trigger.name}}
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="{{trigger.state}}">
+    <ng-container *ngFor="let node of trigger?.children; let i = index">
+
+      <app-my-nav-menu [trigger]="node" [isRootNode]="false"></app-my-nav-menu>
+    </ng-container>
+  </ul>
+</li>-->
+<!--<a class="navbar-brand" *ngIf="isRootNode" href="#">{{ trigger.name }}</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" *ngIf="isRootNode" data-bs-target="#{{trigger.state}}">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="{{trigger.state}}" *ngIf="isRootNode">
+  <ul class="navbar-nav" *ngFor="let node of data; let i = index">
+
+    <li class="nav-item" *ngIf="!isExpandable(node);">
+      <a class="nav-link" href="#">{{ node.name }}</a>
+    </li>
+
+    <li class="nav-item" *ngIf="isExpandable(node);">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">{{node.name}}</a>
+      <ul class="dropdown-menu">
+        <app-my-nav-menu [trigger]="node" [isRootNode]="false" [root]="trigger"
+                         *ngIf="isExpandable(node);"></app-my-nav-menu>
+      </ul>
+    </li>-->
+<!--<ng-template #menuItem>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">{{ node.name }}</a>
+  </li>
+</ng-template>-->
+<!--</ul>
+</div>
+
+
+<li class="nav-item" *ngIf="trigger?.children === undefined && !isRootNode">
+  <a class="nav-link" href="#">{{ trigger.name }}</a>
+</li>
+
+<li class="nav-item" *ngIf="trigger?.children !== undefined && !isRootNode">
+  <a class="nav-link dropdown-toggle" href="#" role="button" id="{{trigger.state}}" data-bs-toggle="dropdown">{{trigger.name}}</a>
+  <ul class="dropdown-menu" *ngFor="let node of trigger?.children; let i = index" aria-labelledby="{{trigger.state}}">
+    <app-my-nav-menu [trigger]="node" [isRootNode]="false"></app-my-nav-menu>
+  </ul>
+</li>-->
+<!--<div class="collapse navbar-collapse" id="{{trigger.state}}" *ngIf="!isRootNode">
+  <ul class="navbar-nav" >
+    <ng-container *ngFor="let node of data; let i = index">-->
+<!--<li class="nav-item" *ngIf="!isRootNode">
+  <a class="nav-link active" aria-current="page" href="#">{{ node.name }}</a>
+  <app-my-nav-menu [trigger]="node" [isRootNode]="false"
+                   *ngIf="isExpandable(node); else menuItem"></app-my-nav-menu>
+</li>-->
+<!--<ng-template #menuItem>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">{{ node.name }}</a>
+        </li>
+      </ng-template>
+    </ng-container>
+  </ul>
+</div>-->
+<!--<a class="navbar-brand" *ngIf="isRootNode" href="#">{{ trigger.name }}</a>
+<button class="navbar-toggler" *ngIf="isRootNode" type="button" data-bs-toggle="collapse" data-bs-target="#{{trigger.state}}" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="{{trigger.state}}" *ngIf="isRootNode">
+  <ul class="navbar-nav">
+    <ng-container *ngFor="let node of data; let i = index">
+
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">{{ node.name }}</a>
+        <app-my-nav-menu [trigger]="node" [isRootNode]="false"
+                         *ngIf="isExpandable(node); else menuItem"></app-my-nav-menu>
+      </li>
+
+      <ng-template #menuItem>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">{{ node.name }}</a>
+        </li>
+      </ng-template>
+    </ng-container>
+  </ul>
+</div>-->
+<!--<a class="navbar-brand" *ngIf="isRootNode" href="#">{{ trigger.name }}</a>
+<button class="navbar-toggler" *ngIf="isRootNode" type="button" data-bs-toggle="collapse" data-bs-target="#{{trigger.state}}" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="{{trigger.state}}" *ngIf="isRootNode">
+  <ul class="navbar-nav">
+    <ng-container *ngFor="let node of data; let i = index">
+
+      <li class="nav-item dropdown">
+        <a class="nav-link active" aria-current="page" href="#">{{ node.name }}</a>
+        <app-my-nav-menu [trigger]="node" [isRootNode]="false"
+                         *ngIf="isExpandable(node); else menuItem"></app-my-nav-menu>
+      </li>
+
+      <ng-template #menuItem>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">{{ node.name }}</a>
+        </li>
+      </ng-template>
+    </ng-container>
+  </ul>
+</div>-->

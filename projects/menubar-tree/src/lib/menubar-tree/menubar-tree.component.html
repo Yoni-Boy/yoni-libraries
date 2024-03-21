@@ -1,0 +1,11 @@
+
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <ng-container *ngFor="let xxx of menuItems.getMenuitemsByURL(menuType)">
+        <lib-menubar-tree-node [trigger]="xxx"
+                         [data]="xxx.children"
+                         [isRootNode]="true"></lib-menubar-tree-node>
+      </ng-container>
+      </div>
+    </nav>
+
